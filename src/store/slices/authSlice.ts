@@ -1,8 +1,7 @@
-// store/authSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import Cookie from "js-cookie";
 
-const BASE_API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const BASE_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // --- Async Thunks for Real API Calls ---
 
@@ -30,7 +29,7 @@ export const sendOtp = createAsyncThunk(
 
 export const verifyOtp = createAsyncThunk(
     "auth/verifyOtp",
-    async (payload: {country: string; phone: string; otp: string }, { rejectWithValue }) => {
+    async (payload: {country: string; phone_number: string; otp: string }, { rejectWithValue }) => {
         try {
             const response = await fetch(`${BASE_API_URL}/v1/auth/otp/verify`, {
                 method: 'POST',

@@ -20,10 +20,11 @@ export default function Home() {
 
                 {/* <Link href={'/profile'} className="text-blue-600">Profile</Link> */}
                 <AuthButton href="/profile">Profile</AuthButton> <br />
-                <Link href="/profile">Profile</Link>
+                <Link href="/profile">Profile</Link> <br />
                 <Link href="/categories">categories</Link> <br />
                 <Link href="/search">Search</Link> <br />
-                <Link href="/exp">Explore</Link>
+                <Link href="/exp">Explore</Link> <br />
+                <Link href="/admin">Admin</Link> <br />
             </div>
         </>
         

@@ -13,7 +13,7 @@ interface Suggestion {
 }
 
 const LocationSelect = () => {
-    const BASE_API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+    const BASE_API_URL = process.env.NEXT_PUBLIC_API_URL;
     const dispatch = useDispatch<AppDispatch>();
     const { isLoading, locationError } = useSelector((state: RootState) => state.location);
     const [searchQuery, setSearchQuery] = useState("");

@@ -26,7 +26,6 @@ export default function AuthProvider({
             if (!accessToken) {
                 dispatch(resetAuth());
                 setIsInitialLoad(false);
-                console.log('No tokens found. User is not authenticated.');
                 return;
             }
 
@@ -36,7 +35,6 @@ export default function AuthProvider({
                 const isExpired = decodedToken.exp < currentTime + 60;
 
                 if (!isExpired) { 
-                    console.log('Valid token found. User is authenticated.');
                     return setIsInitialLoad(false);
                 } else {
                     const response = await api.get('/v1/users/me');
@@ -45,7 +43,6 @@ export default function AuthProvider({
             } catch (error) {
                 dispatch(resetAuth());
                 Cookies.remove('access_token');
-
             } finally {
                 // Check is complete, reveal the UI
                 setIsInitialLoad(false);

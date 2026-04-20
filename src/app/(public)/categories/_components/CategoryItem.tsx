@@ -22,7 +22,7 @@ const CategoryItem: React.FC<{ category: Category }> = ({ category }) => {
 
         setLoading(true);
         try {
-            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/categories`, {
+            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories`, {
                 params: {
                     parent_id: category.id,
                     per_page: 50 // Fetch children without infinite scroll for simplicity

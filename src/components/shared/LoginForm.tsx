@@ -1,22 +1,18 @@
 "use client";
 
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AppDispatch, RootState } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { sendOtp, verifyOtp, resetAuth } from "@/store/slices/authSlice"; // Adjust path if needed
 import { phoneSchema, otpSchema, PhoneFormData, OtpFormData } from "@/schemas/authSchemas"; // Adjust path if needed
 import { closeModal } from "@/store/slices/modalSlice";
 
 const LoginForm = () => {
-    const dispatch = useDispatch<AppDispatch>();
-
-    // UI State
-    const isAuthModalOpen = useSelector((state: RootState) => state.ui.isAuthModalOpen);
+    const dispatch = useAppDispatch();
 
     // Auth State
-    const { isAuthenticated, step, phone, loading, error } = useSelector((state: RootState) => state.auth);
+    const { isAuthenticated, step, phone, loading, error } = useAppSelector((state) => state.auth);
 
     // Form setup for Phone step
     const {
@@ -52,7 +48,7 @@ const LoginForm = () => {
             // dispatch(resetAuth());
             resetPhoneForm();
             resetOtpForm();
-        }, 300);
+        }, 1000);
     };
 
     const handleBackClick = () => {
@@ -71,7 +67,7 @@ const LoginForm = () => {
 
     const onOtpSubmit = (data: OtpFormData) => {
         if (phone) {
-            dispatch(verifyOtp({country: 'IN', phone: phone, otp: data.otp }));
+            dispatch(verifyOtp({country: 'IN', phone_number: phone, otp: data.otp }));
         }
     };
 

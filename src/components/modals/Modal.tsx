@@ -15,9 +15,9 @@ export default function Modal() {
     const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
     const wasOpenRef = useRef(false)  // ← tracks previous isOpen without causing re-renders
 
-    useEffect(() => {
-        dispatch(resetModal())
-    }, [pathname])
+    // useEffect(() => {
+    //     dispatch(resetModal())
+    // }, [pathname])
 
     useEffect(() => {
         // only trigger reset when transitioning from open → closed

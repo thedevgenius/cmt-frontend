@@ -1,8 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "@/store/";
+import { useAppDispatch, useAppSelector } from "@/hooks/useStore";
 import { openModal } from "@/store/slices/modalSlice"; 
 
 interface AuthButtonProps {
@@ -19,9 +18,9 @@ export default function AuthButton({
     onClick,
 }: AuthButtonProps) {
     const router = useRouter();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-    const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+    const { isAuthenticated } = useAppSelector((state) => state.auth);
 
     const handleClick = (e: React.MouseEvent) => {
         if (!isAuthenticated) {
